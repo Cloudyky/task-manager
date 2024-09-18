@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="./vue/vue.global.js" defer></script>
+    <script src="./script.js" defer></script>
+</head>
+<body>
+    <div class="header">
+        <div class="web-name">
+            <img src="./images/logo_kvskills_color.png" alt="kv-skills-logo" class="skills-logo" width="150px" height="150px">
+            <h1 class="title">Task Manager</h1>
+        </div>
+        <div class="info">
+            <img src="./images/icon_info.png" alt="info-icon" class="info-icon">
+            <p class="info-text">
+                Add tasks using register form and drag them <br>
+                through the status column. New task will <br>
+                automaticlly fill in the "Backlog" column.
+            </p>
+        </div>
+    </div>
+
+    <div id="app">  
+        <div class="task-form">
+            <h2>{{ formTitle }}</h2>
+            
+            <form @submit.prevent="handleSubmit" class="form">
+                <input type="text" v-model="newTask" placeholder="Task Name" class="input" required>
+                
+                <!-- Show Responsible field only when editing an 'inProgress' task -->
+                <input type="text" v-if="editingTask && targetColumn === 'inProgress'" v-model="responsible" placeholder="Responsible Person" class="input" required>
+                <button type="submit" class="btn-submit">{{ submitButtonText }}</button>
+                <button type="button" v-if="editingTask" @click="cancelEdit" class="btn-cancel">Cancel</button>
+            </form>
+        </div>
+
+        <div class="board">
+            <div class="column" ref="todoColumn" data-column="todo">
+                <h2>To Do</h2>
+                <div v-for="task in tasks.todo" :key="task.id" class="task" :data-id="task.id">
+                    #{{ task.id }} <br><br> {{ task.text }}
+                    <div class="btn-group">
+                        <button @click="editTask(task, 'todo')" class="btn-edit">Edit</button>
+                        <button @click="deleteTask(task.id, 'todo')" class="btn-delete">Delete</button>
+                        <button @click="moveTaskToInProgress(task)" class="btn-start">Start</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column" ref="inProgressColumn" data-column="inProgress">
+                <h2>In Progress</h2>
+                <div v-for="task in tasks.inProgress" :key="task.id" class="task" :data-id="task.id">
+                    #{{ task.id }} <br><br> {{ task.text }} <br>
+                    Responsible: {{ task.responsible }} <br>
+                    Start Time: {{ task.startTime }}
+                    <div class="btn-group">
+                        <button @click="editTask(task, 'inProgress')" class="btn-edit">Update</button>
+                        <button @click="moveTaskToDone(task)" class="btn-done">Done</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column" ref="doneColumn" data-column="done">
+                <h2>Done</h2>
+                <div v-for="task in tasks.done" :key="task.id" class="task" :data-id="task.id">
+                    #{{ task.id }} <br><br> {{ task.text }} <br>
+                    Start Time: <br> {{ task.startTime }} <br><br>
+                    End Time: <br> {{ task.endTime }} 
+                    <div class="btn-group">
+                        <button @click="deleteTask(task.id, 'done')" class="btn-delete">Delete</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>

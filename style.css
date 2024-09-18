@@ -1,0 +1,218 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-image: url(./images/logo_kvskills_grey.png);
+    background-repeat: no-repeat;
+    background-size: auto;
+    background-position-x: center;
+}
+
+.header{
+    width: 95vw;
+    height: 25vh;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 0px;
+}
+
+.web-name{
+    display: flex;
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.7rem;
+    font-weight: lighter;
+    gap: 40px;
+}
+
+.info{
+    align-items: center;
+    font-family: Arial, Helvetica, sans-serif;
+    gap: 10px;
+    line-height: 1.2rem;
+}
+
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+    padding: 20px;
+}
+
+/* Headings */
+.heading {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+/* Form Styles */
+.task-form {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 250px;
+}
+
+.btn-submit,
+.btn-cancel {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-submit {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-cancel {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Kanban Board */
+.board {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.column {
+    width: 30%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.task {
+    background-color: white;
+    padding: 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: relative;
+    cursor: move;
+}
+
+.btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+/* Buttons in tasks */
+.btn-edit,
+.btn-delete,
+.btn-start,
+.btn-done {
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.btn-edit {
+    background-color: #ff9800;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #f44336;
+    color: white;
+}
+
+.btn-start {
+    background-color: #4caf50;
+    color: white;
+}
+
+.btn-done {
+    background-color: #2196f3;
+    color: white;
+}
+
+/* Additional Styles for Better Responsiveness */
+@media (max-width: 768px) {
+    .board {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .column {
+        width: 100%;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+
+    .input {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .btn-submit,
+    .btn-cancel {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+}
+
+/* Add subtle transitions */
+.task,
+.btn-submit,
+.btn-cancel,
+.btn-edit,
+.btn-delete,
+.btn-start,
+.btn-done {
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.task:hover,
+.btn-submit:hover,
+.btn-cancel:hover,
+.btn-edit:hover,
+.btn-delete:hover,
+.btn-start:hover,
+.btn-done:hover {
+    background-color: #ddd;
+}
+
+.task {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-submit,
+.btn-cancel,
+.btn-edit,
+.btn-delete,
+.btn-start,
+.btn-done {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
